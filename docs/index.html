@@ -12,22 +12,61 @@
     </header>
     <div class="description">
         <h3>大会について</h3>
-        問題を解いてください。
-        <p/>
-        ボタンを押すとスタートします。
-        <p/>
+        <p>
+            問題を解いてください。
+        </p>
+        <p>
+            ボタンを押すとスタートします。
+        </p>
         <input type="button" value="大会を開始" id="startContest">
     </div> 
     <p>
-        <h3>問題1</h3>
+        <h3>問題（ヤジリン）</h3>
         <dev>
-            ルールとか
+            <p>
+                ルール
+                <ol>
+                    <li>輪っかを作る</li>
+                    <li>輪にならないマスは黒マス</li>
+                    <li>数字は矢印の先にある黒マスの数。</li>
+                    <li>黒マスはタテヨコに連続しない</li>
+                </ol>
+                <p>
+                    アンサーキーは、輪の内側にある黒マスの数です。
+                </p>
+            </p>
+            <dev id="inputAnswerKeys" class="hiddenProblem">
+                <p>
+                    <label for="answerKey1">問題１のアンサーキー</label>
+                    <input type="number" name="answerKey1" id="answerKey1">
+                </p>
+                <p>
+                    <label for="answerKey2">問題２のアンサーキー</label>
+                    <input type="number" name="answerKey2" id="answerKey2">
+                </p>
+                <input type="button" value="アンサーキーを送信" id="endContest">
+            </dev>
         </dev>
-        <dev>問題画像</dev>
-        <p/>
-        <input type="text" id="answerKey1" placeholder="アンサーキーを入力">
-        <input type="button" value="アンサーキーを送信" id="endContest">
+        <p id="problem1">
+            <h3>問題１</h3>
+            <p class="problem hiddenProblem">
+                <a href="http://pzv.jp/p.html?yajirin" id="problemLink1" target="_blank">パズプレで解く</a>
+                <img src="./problems/image/dummy.png" title="問題1" id="problemImage1">
+            </p>
+        </p>
+        <p id="problem2">
+            <h3>問題２</h3>
+            <p class="problem hiddenProblem">
+                <a href="http://pzv.jp/p.html?yajirin" id="problemLink2" target="_blank">パズプレで解く</a>
+                <img src="./problems/image/dummy.png" title="問題2" id="problemImage2">
+            </p>
+        </p>
     </p>
+    <p class="hidden">
+        <span id="problemAnswerKey1"></span>
+        <span id="problemAnswerKey2"></span>
+    </p>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script type="text/javascript" src="./js/main.js"></script>
 </body>
 

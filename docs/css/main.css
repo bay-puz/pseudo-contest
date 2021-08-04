@@ -8,3 +8,15 @@ header {
     color:grey;
     text-align: center;
 }
+
+.problem {
+    text-align: center;    
+}
+
+.hiddenProblem {
+    visibility:hidden;
+}
+
+.hidden {
+    display: none;
+}
