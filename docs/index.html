@@ -8,67 +8,68 @@
 
 <body>
     <header>
-        <h1>YPC: Yajilin Pseudo Contest</h1>
+        <h1>YPC -Yajilin Pseudo Contest-</h1>
     </header>
     <div class="description">
-        <h3>大会について</h3>
         <p>
-            問題を解いてください。
+            ヤジリンが２問出題されます。それぞれのアンサーキーを回答し、送信しましょう。
         </p>
         <p>
             ボタンを押すとスタートします。
         </p>
-        <input type="button" value="大会を開始" id="startContest">
+        <button id="startContest">大会を始める</button>
     </div> 
-    <p>
-        <dev>
-            <p>
-                ヤジリンのルール
-                <ol>
-                    <li>輪っかを作る</li>
-                    <li>輪にならないマスは黒マス</li>
-                    <li>数字は矢印の先にある黒マスの数。</li>
-                    <li>黒マスはタテヨコに連続しない</li>
-                </ol>
-            </p>
-            <p>
-                アンサーキーは、輪の内側にある黒マスの数です。
-            </p>
-            <dev id="inputAnswerKeys" class="hiddenProblem">
-                <p>
-                    <label for="answerKey1">問題１のアンサーキー</label>
-                    <input type="number" name="answerKey1" id="answerKey1">
-                </p>
-                <p>
-                    <label for="answerKey2">問題２のアンサーキー</label>
-                    <input type="number" name="answerKey2" id="answerKey2">
-                </p>
-                <input type="button" value="アンサーキーを送信" id="endContest">
-            </dev>
-        </dev>
-        <p id="problem1">
-            <h3>問題１</h3>
-            <span id="problemScoreText1">配点：</span>
-            <p class="problem hiddenProblem">
-                <a href="http://pzv.jp/p.html?yajirin" id="problemLink1" target="_blank">パズプレで解く</a>
-                <img src="./problems/image/dummy.png" title="問題1" id="problemImage1">
-            </p>
+    <div class="rule">
+        <p>
+            <h3>ヤジリンのルール</h3>
+            <ol>
+                <li>線を引いて、盤面全体で輪っかを１つ作りましょう。</li>
+                <li>線はタテヨコに引いてマスの中央を通り、交差も枝分かれもしません。</li>
+                <li>線が通らず、ヒント（矢印付きの数字と「？」）もないマスは黒マスになります。</li>
+                <li>数字は、そのマスから矢印が向いている方向にある黒マスの数を表します。</li>
+                <li>黒マスはタテヨコに連続しません。</li>
+            </ol>
         </p>
-        <p id="problem2">
-            <h3>問題２</h3>
-            <span id="problemScoreText2">配点：</span>
-            <p class="problem hiddenProblem">
-                <a href="http://pzv.jp/p.html?yajirin" id="problemLink2" target="_blank">パズプレで解く</a>
-                <img src="./problems/image/dummy.png" title="問題2" id="problemImage2">
-            </p>
+        <p>
+            <h3>ヤジリンのアンサーキー</h3>
+            アンサーキーは、解答盤面で輪っかの内側にある黒マスの数です。
         </p>
-    </p>
-    <p class="hidden">
+    </div>
+    <div id="inputAnswerKeys" class="hiddenProblem answerKey">
+        <p>
+            <label for="answerKey1">問題１のアンサーキー</label>
+            <input type="number" name="answerKey1" id="answerKey1">
+        </p>
+        <p>
+            <label for="answerKey2">問題２のアンサーキー</label>
+            <input type="number" name="answerKey2" id="answerKey2">
+        </p>
+        <button id="endContest">アンサーキーを送信する</button>
+    </div>
+    <div id="problem1">
+        <h2>問題１</h2>
+        <span id="problemScoreText1">配点：XX点</span>
+        <p class="problem hiddenProblem">
+            <img src="./problems/image/dummy.png" title="問題1" id="problemImage1">
+            <br/>
+            <a href="http://pzv.jp/p.html?yajirin" id="problemLink1" target="_blank">パズプレで解く</a>
+        </p>
+    </div>
+    <div id="problem2">
+        <h2>問題２</h2>
+        <span id="problemScoreText2">配点：XX点</span>
+        <p class="problem hiddenProblem">
+            <img src="./problems/image/dummy.png" title="問題2" id="problemImage2">
+            <br/>
+            <a href="http://pzv.jp/p.html?yajirin" id="problemLink2" target="_blank">パズプレで解く</a>
+        </p>
+    </div>
+    <div class="hidden">
         <span id="problemAnswerKey1"></span>
         <span id="problemAnswerKey2"></span>
         <span id="problemScore1"></span>
         <span id="problemScore2"></span>
-    </p>
+    </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script type="text/javascript" src="./js/main.js"></script>
 </body>

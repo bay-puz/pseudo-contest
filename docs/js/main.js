@@ -8,6 +8,8 @@ endButton.addEventListener("click", endContest);
 
 function startContest(event) {
     startButton.disabled = true;
+    startButton.innerText = "…解いています…"
+    startButton.classList.add("solving");
     setProblem();
     while (true) {
         var hiddenProblems = document.getElementsByClassName("hiddenProblem");
