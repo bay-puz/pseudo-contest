@@ -1,0 +1,10 @@
+header {
+    font-variant: small-caps;
+}
+
+.description {
+    font-weight: bold;
+    background-color: aquamarine;
+    color:grey;
+    text-align: center;
+}
