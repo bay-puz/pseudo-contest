@@ -21,14 +21,19 @@ function startContest(event) {
 
 function endContest(event) {
     var countCorrect = 0;
+    var perfectScore = 0;
+    var gettingScore = 0;
     for (let num = 1; num < NUM_PROBLEM + 1; num++) {
         var inputAnswerKey = document.getElementById("answerKey" + num).value;
         var problemAnswerKey = document.getElementById("problemAnswerKey" + num).innerText;
+        var problemScore = document.getElementById("problemScore" + num).innerText;
         if (inputAnswerKey === problemAnswerKey) {
             countCorrect++;
+            gettingScore += parseInt(problemScore);
         }
+        perfectScore += parseInt(problemScore);
     }
-    alert("正解数は" + countCorrect + "問です");
+    alert(gettingScore + "/" + perfectScore + "点（" + countCorrect + "問正解）");
 }
 
 function setProblem() {
@@ -41,11 +46,14 @@ function setProblem() {
         }
         for (let index = 0; index < NUM_PROBLEM; index++) {
             var problem = problems[index];
-            var imagePath = "problems/image/" + problem.image;
             const num = index + 1
+            var scoreString = "配点：" + problem.score + "点";
+            document.getElementById("problemScoreText" + num).innerText = scoreString;
+            var imagePath = "problems/image/" + problem.image;
             document.getElementById("problemImage" + num).src = imagePath;
             document.getElementById("problemLink" + num).href = problem.url;
-            document.getElementById("problemAnswerKey" + num).innerText = problem.answerKey;                
+            document.getElementById("problemAnswerKey" + num).innerText = problem.answerKey;
+            document.getElementById("problemScore" + num).innerText = problem.score;               
         }
     });
 }
