@@ -72,3 +72,14 @@ button {
     display: none;
 }
 
+.resultBody {
+    text-align: center;
+    color:black;
+    background-color: lightcyan;
+    padding: 0.1em;
+}
+
+.resultMessage {
+    font-size: x-large;
+    padding: 0.5em;
+}

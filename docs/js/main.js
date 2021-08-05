@@ -35,13 +35,17 @@ function endContest(event) {
         }
         perfectScore += parseInt(problemScore);
     }
-    var searchParams = new URLSearchParams();
-    searchParams.append("c", countCorrect);
-    searchParams.append("p", perfectScore);
-    searchParams.append("s", gettingScore);
-    var url = new URL('/result/', location.href);
-    url.search = searchParams;
-    location.href = url.href;
+
+    var resultElements = document.getElementsByClassName("result");
+    var newBody = document.createElement("body");
+    for (const resultElement of resultElements) {
+        resultElement.classList.remove("hidden");
+        newBody.innerHTML += resultElement.outerHTML;
+    }
+    document.body = newBody;
+    document.getElementById("count").innerText = countCorrect;
+    document.getElementById("score").innerText = gettingScore;
+    document.getElementById("scorePerfect").innerText = perfectScore;
 }
 
 function setProblem() {
