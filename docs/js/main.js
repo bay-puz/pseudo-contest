@@ -13,7 +13,7 @@ function startContest(event) {
     setProblem();
     while (true) {
         var hiddenProblems = document.getElementsByClassName("hiddenProblem");
-        if (hiddenProblems) {
+        if (hiddenProblems.length > 0) {
             hiddenProblems[0].classList.remove("hiddenProblem");
         } else {
             break;
@@ -35,7 +35,13 @@ function endContest(event) {
         }
         perfectScore += parseInt(problemScore);
     }
-    alert(gettingScore + "/" + perfectScore + "点（" + countCorrect + "問正解）");
+    var searchParams = new URLSearchParams();
+    searchParams.append("c", countCorrect);
+    searchParams.append("p", perfectScore);
+    searchParams.append("s", gettingScore);
+    var url = new URL('/result/', location.href);
+    url.search = searchParams;
+    location.href = url.href;
 }
 
 function setProblem() {
