@@ -40,7 +40,7 @@ function endContest(event) {
 
 function setProblem() {
     var listFile = "problems/list.json";
-    $.getJSON(listFile, (data) => {
+    fetch(listFile).then(Response=>Response.json()).then(function(data){
         var nums = [0, 1];
         var problems = [];
         for (let index = 0; index < NUM_PROBLEM; index++) {
