@@ -1,15 +1,18 @@
 const NUM_PROBLEM = 2;
 
-var startButton = document.getElementById("startContest");
+var startButton = document.getElementById("startButton");
 startButton.addEventListener("click", startContest);
 
 var endButton = document.getElementById("endContest");
 endButton.addEventListener("click", endContest);
 
+var passSecond;
+
 function startContest(event) {
     startButton.disabled = true;
-    startButton.innerText = "…解いています…"
+    startButton.innerText = parseTime(0);
     startButton.classList.add("solving");
+    startTime();
     setProblem();
     while (true) {
         var hiddenProblems = document.getElementsByClassName("hiddenProblem");
@@ -19,9 +22,33 @@ function startContest(event) {
             break;
         }
     }
-};
+}
+
+function startTime() {
+    passSecond = 0;
+    timerId = setInterval(showTime, 1000);
+}
+
+function parseTime(timeSec) {
+    hour = Math.floor(timeSec/60/60);
+    minute = Math.floor(timeSec/60) % 60;
+    second = timeSec % 60;
+    minute = minute < 10 ? '0' + minute: minute;
+    second = second < 10 ? '0' + second: second;
+    return hour + ':' + minute + ':' + second;
+}
+
+function showTime() {
+    passSecond++;
+    startButton.innerText = parseTime(passSecond);
+}
+
+function stopTime() {
+    clearInterval(timerId);
+}
 
 function endContest(event) {
+    stopTime();
     var countCorrect = 0;
     var perfectScore = 0;
     var gettingScore = 0;
@@ -43,9 +70,11 @@ function endContest(event) {
         newBody.innerHTML += resultElement.outerHTML;
     }
     document.body = newBody;
+
     document.getElementById("count").innerText = countCorrect;
     document.getElementById("score").innerText = gettingScore;
     document.getElementById("scorePerfect").innerText = perfectScore;
+    document.getElementById("time").innerText = parseTime(passSecond);
 }
 
 function setProblem() {

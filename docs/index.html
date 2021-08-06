@@ -11,13 +11,11 @@
         <h1>YPC -Yajilin Pseudo Contest-</h1>
     </header>
     <div class="description">
-        <p>
-            ヤジリンが２問出題されます。それぞれのアンサーキーを回答し、送信しましょう。
-        </p>
-        <p>
-            ボタンを押すとスタートします。
-        </p>
-        <button id="startContest">大会を始める</button>
+        <p>ヤジリンが２問出題されます。</p>
+        <p>それぞれのアンサーキーを回答し、送信しましょう。</p>
+        <p>解答時間は計測しますが、制限時間はありません。</p>
+        <p>ボタンを押すとスタートします。</p>
+        <button id="startButton">大会を始める</button>
     </div> 
     <div class="rule">
         <p>
@@ -72,7 +70,10 @@
             正解数：<span id="count" class="resultMessage">0</span>問
         </p>
         <p>
-            得点：<span id="score" class="resultMessage">0</span>/<span id="scorePerfect">0</span>点
+            得点：<span id="score" class="resultMessage">0</span>点（<span id="scorePerfect">0</span>点）
+        </p>
+        <p>
+            時間：<span id="time" class="resultMessage">0:00:00</span>
         </p>
         <p>
             <a href="../">もう一度遊ぶ</a>
