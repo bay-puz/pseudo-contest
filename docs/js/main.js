@@ -3,8 +3,8 @@ const NUM_PROBLEM = 2;
 var startButton = document.getElementById("startButton");
 startButton.addEventListener("click", startContest);
 
-var endButton = document.getElementById("endContest");
-endButton.addEventListener("click", endContest);
+var finishButton = document.getElementById("finishButton");
+finishButton.addEventListener("click", finishContest);
 
 var passSecond;
 
@@ -12,16 +12,10 @@ function startContest(event) {
     startButton.disabled = true;
     startButton.innerText = parseTime(0);
     startButton.classList.add("solving");
+    document.getElementById("inputAnswerKeys").classList.remove("hidden");
+
     startTime();
     setProblem();
-    while (true) {
-        var hiddenProblems = document.getElementsByClassName("hiddenProblem");
-        if (hiddenProblems.length > 0) {
-            hiddenProblems[0].classList.remove("hiddenProblem");
-        } else {
-            break;
-        }
-    }
 }
 
 function startTime() {
@@ -47,7 +41,7 @@ function stopTime() {
     clearInterval(timerId);
 }
 
-function endContest(event) {
+function finishContest(event) {
     stopTime();
     var countCorrect = 0;
     var perfectScore = 0;

@@ -3,7 +3,7 @@ header {
     text-align: center;
     font-weight: bold;
     color: black;
-    border-bottom: solid;;
+    border-bottom: solid;
     border-color:darkred;
     padding: 0.1em;
 }
@@ -25,6 +25,12 @@ button {
     background-color:aquamarine;
     color: navy;
     text-align: center;
+}
+
+.rule {
+    padding-left: 1em;
+    border: solid;
+    border-color: black;
 }
 
 .description button {
@@ -62,10 +68,6 @@ button {
 
 .problem a {
     font-size: large;
-}
-
-.hiddenProblem {
-    display: none;
 }
 
 .hidden {
