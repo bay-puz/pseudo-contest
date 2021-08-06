@@ -65,6 +65,7 @@ function finishContest(event) {
     }
     document.body = newBody;
 
+    document.getElementById("rank").innerText = generateRank(countCorrect);
     document.getElementById("count").innerText = countCorrect;
     document.getElementById("score").innerText = gettingScore;
     document.getElementById("scorePerfect").innerText = perfectScore;
@@ -91,4 +92,10 @@ function setProblem() {
             document.getElementById("problemScore" + num).innerText = problem.score;               
         }
     });
+}
+
+function generateRank(count) {
+    const range = 33;
+    var offset = (2-count) * range;
+    return Math.floor(Math.random() * range) + offset;
 }
