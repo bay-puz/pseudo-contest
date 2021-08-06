@@ -75,10 +75,14 @@ function finishContest(event) {
 function setProblem() {
     var listFile = "problems/list.json";
     fetch(listFile).then(Response=>Response.json()).then(function(data){
-        var nums = [0, 1];
         var problems = [];
         for (let index = 0; index < NUM_PROBLEM; index++) {
-            problems[index] = data[nums[index]];
+            const rand = Math.floor(Math.random()*data.length);
+            problems.push(data[rand]);
+            data.splice(rand, 1);
+        }
+        if (problems[0].score > problems[1].score) {
+            problems.reverse();
         }
         for (let index = 0; index < NUM_PROBLEM; index++) {
             var problem = problems[index];
