@@ -1,4 +1,6 @@
 const NUM_PROBLEM = 2;
+const MIN_SUM_SCORE = 100;
+const MAX_SUM_SCORE = 160;
 
 var startButton = document.getElementById("startButton");
 startButton.addEventListener("click", startContest);
@@ -72,29 +74,46 @@ function finishContest(event) {
     document.getElementById("time").innerText = parseTime(passSecond);
 }
 
-function setProblem() {
-    var listFile = "problems/list.json";
-    fetch(listFile).then(Response=>Response.json()).then(function(data){
-        var problems = [];
-        for (let index = 0; index < NUM_PROBLEM; index++) {
-            const rand = Math.floor(Math.random()*data.length);
-            problems.push(data[rand]);
-            data.splice(rand, 1);
+async function setProblem() {
+    var problems = [];
+    while (true) {
+        problems = await getProblems();
+        const sum_score = problems.reduce(function(sum, p) {
+            return sum + p.score;
+        }, 0);
+        if(MIN_SUM_SCORE <= sum_score  && sum_score <= MAX_SUM_SCORE) {
+            break;
         }
-        if (problems[0].score > problems[1].score) {
-            problems.reverse();
-        }
-        for (let index = 0; index < NUM_PROBLEM; index++) {
-            var problem = problems[index];
-            const num = index + 1
-            document.getElementById("problemScoreText" + num).innerText = problem.score;
-            document.getElementById("problemAuthor" + num).innerText = problem.author;
-            var imagePath = "problems/image/" + problem.image;
-            document.getElementById("problemImage" + num).src = imagePath;
-            document.getElementById("problemLink" + num).href = problem.url;
-            document.getElementById("problemAnswerKey" + num).innerText = problem.answerKey;
-            document.getElementById("problemScore" + num).innerText = problem.score;
-        }
+    }
+    problems.sort(function(a,b) {
+        return a.score -b.score;
+    });
+    for (let index = 0; index < problems.length; index++) {
+        var problem = problems[index];
+        const num = index + 1
+        document.getElementById("problemScoreText" + num).innerText = problem.score;
+        document.getElementById("problemAuthor" + num).innerText = problem.author;
+        var imagePath = "problems/image/" + problem.image;
+        document.getElementById("problemImage" + num).src = imagePath;
+        document.getElementById("problemLink" + num).href = problem.url;
+        document.getElementById("problemAnswerKey" + num).innerText = problem.answerKey;
+        document.getElementById("problemScore" + num).innerText = problem.score;
+    }
+}
+
+function getProblems() {
+    return new Promise(resolve => {
+        var ret = [];
+        var listFile = "problems/list.json";
+        fetch(listFile).then(Response=>Response.json()).then(function(data){
+            while (ret.length < NUM_PROBLEM) {
+                const rand = Math.floor(Math.random()*data.length);
+                const d = data[rand];
+                ret.push(d);
+                data.splice(rand, 1);
+            }
+            resolve(ret);
+        });
     });
 }
 
