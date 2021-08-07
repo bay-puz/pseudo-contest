@@ -30,7 +30,12 @@ button {
 .rule {
     padding-left: 1em;
     border: solid;
-    border-color: black;
+    border-color:lightgray;
+}
+
+.rule>summary {
+    font-size: large;
+    cursor: pointer;
 }
 
 .description button {

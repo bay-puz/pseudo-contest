@@ -12,12 +12,13 @@
     </header>
     <div class="description">
         <p>ヤジリンが２問出題されます。</p>
-        <p>それぞれのアンサーキーを回答し、送信しましょう。</p>
+        <p>それぞれの問題を解き、アンサーキーを送信しましょう。</p>
         <p>解答時間は計測しますが、制限時間はありません。</p>
         <p>ボタンを押すとスタートします。</p>
         <button id="startButton">大会を始める</button>
-    </div> 
-    <div class="rule">
+    </div>
+    <details class="rule">
+        <summary>ルールとアンサーキー</summary>
         <p>
             <h3>ヤジリンのルール</h3>
             <ol>
@@ -32,17 +33,21 @@
             <h3>ヤジリンのアンサーキー</h3>
             アンサーキーは、解答盤面で輪っかの内側にある黒マスの数です。
         </p>
-    </div>
-    <div id="inputAnswerKeys" class="answerKey hidden">
-        <p>
-            <label for="answerKey1">問題１のアンサーキー</label>
-            <input type="number" name="answerKey1" id="answerKey1" min="0">
-        </p>
-        <p>
-            <label for="answerKey2">問題２のアンサーキー</label>
-            <input type="number" name="answerKey2" id="answerKey2" min="0">
-        </p>
-        <button id="finishButton">アンサーキーを送信する</button>
+    </details>
+    <div class="answerKey">
+        解答が終わったらアンサーキーを入力し、送信しましょう。
+        送信できるのは１度だけです。
+        <div id="inputAnswerKeys" class="hidden">
+            <p>
+                <label for="answerKey1">問題１のアンサーキー</label>
+                <input type="number" name="answerKey1" id="answerKey1" min="0">
+            </p>
+            <p>
+                <label for="answerKey2">問題２のアンサーキー</label>
+                <input type="number" name="answerKey2" id="answerKey2" min="0">
+            </p>
+            <button id="finishButton">アンサーキーを送信する</button>
+        </div>
     </div>
     <div id="problem1">
         <h2>問題１</h2>
