@@ -87,13 +87,13 @@ function setProblem() {
         for (let index = 0; index < NUM_PROBLEM; index++) {
             var problem = problems[index];
             const num = index + 1
-            var scoreString = "配点：" + problem.score + "点";
-            document.getElementById("problemScoreText" + num).innerText = scoreString;
+            document.getElementById("problemScoreText" + num).innerText = problem.score;
+            document.getElementById("problemAuthor" + num).innerText = problem.author;
             var imagePath = "problems/image/" + problem.image;
             document.getElementById("problemImage" + num).src = imagePath;
             document.getElementById("problemLink" + num).href = problem.url;
             document.getElementById("problemAnswerKey" + num).innerText = problem.answerKey;
-            document.getElementById("problemScore" + num).innerText = problem.score;               
+            document.getElementById("problemScore" + num).innerText = problem.score;
         }
     });
 }
