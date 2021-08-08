@@ -43,16 +43,17 @@ function stopTime() {
     clearInterval(timerId);
 }
 
-function finishContest(event) {
+async function finishContest(event) {
     stopTime();
     var countCorrect = 0;
     var perfectScore = 0;
     var gettingScore = 0;
     for (let num = 1; num < NUM_PROBLEM + 1; num++) {
-        var inputAnswerKey = document.getElementById("answerKey" + num).value;
-        var problemAnswerKey = document.getElementById("problemAnswerKey" + num).innerText;
+        const inputAnswerKey = document.getElementById("answerKey" + num).value;
+        const inputAnswerKeyHash = await hashAnswerKey(inputAnswerKey);
+        const problemAnswerKeyHash = document.getElementById("problemAnswerKey" + num).innerText;
         var problemScore = document.getElementById("problemScore" + num).innerText;
-        if (inputAnswerKey === problemAnswerKey) {
+        if (inputAnswerKeyHash === problemAnswerKeyHash) {
             countCorrect++;
             gettingScore += parseInt(problemScore);
         }
@@ -93,10 +94,11 @@ async function setProblem() {
         const num = index + 1
         document.getElementById("problemScoreText" + num).innerText = problem.score;
         document.getElementById("problemAuthor" + num).innerText = problem.author;
-        var imagePath = "problems/image/" + problem.image;
+        const imagePath = "problems/image/" + problem.image;
         document.getElementById("problemImage" + num).src = imagePath;
         document.getElementById("problemLink" + num).href = problem.url;
-        document.getElementById("problemAnswerKey" + num).innerText = problem.answerKey;
+        const hash = await hashAnswerKey(problem.answerKey);
+        document.getElementById("problemAnswerKey" + num).innerText = hash;
         document.getElementById("problemScore" + num).innerText = problem.score;
     }
 }
@@ -121,4 +123,13 @@ function generateRank(count) {
     const range = 33;
     var offset = (2-count) * range;
     return Math.floor(Math.random() * range) + offset;
+}
+
+async function hashAnswerKey(num, key) {
+    const message = "sgnp13ka" + num + key + "ll1wo";
+    const msgUint8 = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    return hashHex;
 }
