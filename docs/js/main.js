@@ -123,7 +123,7 @@ function getProblems() {
 function generateRank(count) {
     const range = 33;
     var offset = (2-count) * range;
-    return Math.floor(Math.random() * range) + offset;
+    return Math.floor(Math.random() * range) + 1 + offset;
 }
 
 async function hashAnswerKey(num, key) {
