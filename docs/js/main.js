@@ -59,6 +59,7 @@ async function finishContest(event) {
         }
         perfectScore += parseInt(problemScore);
     }
+    const rank = generateRank(countCorrect);
 
     var resultElements = document.getElementsByClassName("result");
     var newBody = document.createElement("body");
@@ -67,12 +68,12 @@ async function finishContest(event) {
         newBody.innerHTML += resultElement.outerHTML;
     }
     document.body = newBody;
-
-    document.getElementById("rank").innerText = generateRank(countCorrect);
+    document.getElementById("rank").innerText = rank;
     document.getElementById("count").innerText = countCorrect;
     document.getElementById("score").innerText = gettingScore;
     document.getElementById("scorePerfect").innerText = perfectScore;
     document.getElementById("time").innerText = parseTime(passSecond);
+    document.getElementById("tweetButton").href = getTweetUrl(rank);
 }
 
 async function setProblem() {
@@ -132,4 +133,15 @@ async function hashAnswerKey(num, key) {
     const hashArray = Array.from(new Uint8Array(hashBuffer));
     const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
     return hashHex;
+}
+
+function getTweetUrl(rank) {
+    var url = new URL("https://twitter.com/intent/tweet");
+    var params = new URLSearchParams();
+    params.append("hashtags", "YajilinPseudoContest");
+    params.append("url", location.href);
+    const tweetText = "YPCの順位は" + rank + "位でした！";
+    params.append("text", tweetText);
+    url.search = params.toString();
+    return url.toString();
 }
