@@ -1,0 +1,97 @@
+header {
+    font-variant: small-caps;
+    text-align: center;
+    font-weight: bold;
+    color: black;
+    border-bottom: solid;
+    border-color:darkred;
+    padding: 0.1em;
+}
+
+button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.solving {
+    cursor: default;
+}
+
+.description {
+    font-family: serif;
+    padding: 0.2em;
+    font-weight: bold;
+    background-color:aquamarine;
+    color: navy;
+    text-align: center;
+}
+
+.rule {
+    padding-left: 1em;
+    border: solid;
+    border-color:lightgray;
+}
+
+.rule>summary {
+    font-size: large;
+    cursor: pointer;
+}
+
+.description button {
+    font-size: x-large;
+    color:navy;
+    background-color: lightskyblue;
+    border-radius: 1em;
+    padding: 0.4em;
+}
+
+.answerKey {
+    font-size: large;
+    text-align: center;
+    padding: 0.5em;
+    background-color:lightyellow;
+}
+
+.answerKey input{
+    font-size: large;
+    width: 4em;
+}
+
+.answerKey button {
+    font-size: large;
+    padding: 0.5em;
+    background-color:khaki;
+    border-radius: 0.5em;
+}
+
+.problem {
+    padding: 0.5em;
+    text-align: center;
+    background-color:lightcyan;
+}
+
+.problem a {
+    font-size: large;
+}
+
+.hidden {
+    display: none;
+}
+
+.resultBody {
+    text-align: center;
+    color:black;
+    background-color: lightcyan;
+    padding: 0.1em;
+}
+
+.resultMessage {
+    font-size: x-large;
+    padding: 0.5em;
+}
+
+.resultLink>a{
+    font-size: large;
+    color: blue;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Yajilin Pseudo Contest</title>
+    <link href="./css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <header class="result">
+        <h1>YPC -Yajilin Pseudo Contest-</h1>
+    </header>
+    <div class="description">
+        <p>ヤジリンが２問出題されます。</p>
+        <p>それぞれの問題を解き、アンサーキーを送信しましょう。</p>
+        <p>解答時間は計測しますが、制限時間はありません。</p>
+        <p>ボタンを押すとスタートします。</p>
+        <button id="startButton">大会を始める</button>
+    </div>
+    <details class="rule">
+        <summary>ルールとアンサーキー</summary>
+        <p>
+            <h3>ヤジリンのルール</h3>
+            <ol>
+                <li>線を引いて、盤面全体で輪っかを１つ作りましょう。</li>
+                <li>線はタテヨコに引いてマスの中央を通り、交差も枝分かれもしません。</li>
+                <li>線が通らず、ヒント（矢印付きの数字と「？」）もないマスは黒マスになります。</li>
+                <li>数字は、そのマスから矢印が向いている方向にある黒マスの数を表します。</li>
+                <li>黒マスはタテヨコに連続しません。</li>
+            </ol>
+        </p>
+        <p>
+            <h3>ヤジリンのアンサーキー</h3>
+            アンサーキーは、解答盤面で輪っかの内側にある黒マスの数です。
+        </p>
+    </details>
+    <div class="answerKey">
+        解答が終わったらアンサーキーを入力し、送信しましょう。
+        送信できるのは１度だけです。
+        <div id="inputAnswerKeys" class="hidden">
+            <p>
+                <label for="answerKey1">問題１のアンサーキー</label>
+                <input type="number" name="answerKey1" id="answerKey1" min="0">
+            </p>
+            <p>
+                <label for="answerKey2">問題２のアンサーキー</label>
+                <input type="number" name="answerKey2" id="answerKey2" min="0">
+            </p>
+            <button id="finishButton">アンサーキーを送信する</button>
+        </div>
+    </div>
+    <div id="problem1">
+        <h2>問題１</h2>
+        <p>配点：<span id="problemScoreText1">??</span>点</p>
+        <p>作者：<span id="problemAuthor1">？？？？</span></p>
+        <p class="problem">
+            <img src="./problems/image/secret.png" title="問題1" id="problemImage1">
+            <br/>
+            <a href="http://pzv.jp/p.html?yajirin" id="problemLink1" target="_blank">パズプレで解く</a>
+        </p>
+    </div>
+    <div id="problem2">
+        <h2>問題２</h2>
+        <p>配点：<span id="problemScoreText2">??</span>点</p>
+        <p>作者：<span id="problemAuthor2">？？？？</span></p>
+        <p class="problem">
+            <img src="./problems/image/secret.png" title="問題2" id="problemImage2">
+            <br/>
+            <a href="http://pzv.jp/p.html?yajirin" id="problemLink2" target="_blank">パズプレで解く</a>
+        </p>
+    </div>
+    <div class="hidden result resultBody">
+        <p class="resultMessage">
+            ＼結果発表／
+        </p>
+        <p>
+            順位<span id="rank" class="resultMessage">100</span>位
+        </p>
+        <p>
+            正解数<span id="count" class="resultMessage">0</span>問
+        </p>
+        <p>
+            得点<span id="score" class="resultMessage">0</span>点（<span id="scorePerfect">0</span>点）
+        </p>
+        <p>
+            時間<span id="time" class="resultMessage">0:00:00</span>
+        </p>
+        <p class="resultLink">
+            <a href="" id="tweetButton" target="_blank">ツイートする</a>
+            <a href="./" target="_self">もう一度遊ぶ</a>
+        </p>
+    </div>
+    <div class="hidden">
+        <span id="problemAnswerKey1"></span>
+        <span id="problemAnswerKey2"></span>
+        <span id="problemScore1"></span>
+        <span id="problemScore2"></span>
+    </div>
+    <script type="text/javascript" src="./js/main.js"></script>
+</body>
+
+</html>
